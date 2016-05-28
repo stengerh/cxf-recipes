@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="EchoService11"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:whttp="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns:wsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="urn:service11.cxf-demo.stengerh.github.com"
+             targetNamespace="urn:service11.cxf-demo.stengerh.github.com">
+    <documentation>
+        WSDL 2.0 demo
+    </documentation>
+    
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns="urn:service11.cxf-demo.stengerh.github.com"
+                   targetNamespace="urn:service11.cxf-demo.stengerh.github.com">
+            
+            <xs:simpleType name="char20">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="20"/>
+                </xs:restriction>
+            </xs:simpleType>
+                 
+            <xs:element name="GetRequest" type="char20"/>
+            
+            <xs:element name="GetResponse" type="char20"/>
+        </xs:schema>
+    </types>
+    
+    <message name="GetInputMessage">
+        <part name="value" element="tns:GetRequest"/>
+    </message>
+    
+    <message name="GetOutputMessage">
+        <part name="value" element="tns:GetResponse"/>
+    </message>
+
+    <portType name="EchoPortType">
+        <operation name="Echo">
+            <input message="tns:GetInputMessage"/>
+            <output message="tns:GetOutputMessage"/>
+        </operation>
+    </portType>
+    
+    <binding name="SoapBinding" type="tns:EchoPortType">
+        <wsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Echo">
+            <wsoap:operation soapAction="urn:service11.cxf-demo.stengerh.github.com:Echo"/>
+            <input>
+                <wsoap:body use="literal"/>
+            </input>
+            <output>
+                <wsoap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    
+    <service name="EchoService">
+        <port name="SoapPort" binding="tns:SoapBinding">
+              <wsoap:address location="http://localhost/wsdl11/soap11/"/>
+        </port>
+    </service>
+    
+</definitions>

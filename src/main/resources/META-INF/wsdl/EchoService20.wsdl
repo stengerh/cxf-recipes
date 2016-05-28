@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="EchoService20"
+             xmlns="http://www.w3.org/ns/wsdl"
+             xmlns:whttp="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns:wsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="urn:service20.cxf-demo.stengerh.github.com"
+             targetNamespace="urn:service20.cxf-demo.stengerh.github.com">
+    <documentation>
+        WSDL 2.0 demo
+    </documentation>
+    
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns="urn:service20.cxf-demo.stengerh.github.com"
+                   targetNamespace="urn:service20.cxf-demo.stengerh.github.com">
+            
+            <xs:simpleType name="char20">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="20"/>
+                </xs:restriction>
+            </xs:simpleType>
+                 
+            <xs:element name="request" type="char20"/>
+            
+            <xs:element name="response" type="char20"/>
+        </xs:schema>
+    </types>
+
+    <interface name="EchoInterface">
+        <fault name="EchoFault" element="tns:response"/>
+        <operation name="Echo" pattern="http://www.w3.org/ns/wsdl/in-out">
+            <input messageLabel="In" element="tns:request"/>
+            <output messageLabel="Out" element="tns:response"/>
+        </operation>
+    </interface>
+    
+    <binding name="SoapBinding" interface="tns:EchoInterface"
+             type="http://www.w3.org/ns/wsdl/soap"
+             wsoap:protocol="http://www.w3.org/2003/05/soap/bindings/HTTP/"
+             wsoap:mepDefault="http://www.w3.org/2003/05/soap/mep/request-response">
+        <operation ref="tns:Echo"/>
+    </binding>
+    
+    <service name="EchoService" interface="tns:EchoInterface">
+        <endpoint name="SoapEndpoint"
+                  binding="tns:SoapBinding"
+                  address="http://localhost/wsdl11/soap11/"/>
+    </service>
+    
+</definitions>
