@@ -5,6 +5,9 @@
 3. Add /META-INF/jax-ws-catalog.xml to resources.
 4. Add WSDL file to resources and reference it from catalog using a relative URL.
 
+The WSDL and catalog files have to be in the same JAR file.
+Otherwise the relative URL does not work.
+
 ## References
 
 1. [JAX-WS client : what's the correct path to access the local WSDL?](http://stackoverflow.com/questions/4163586/jax-ws-client-whats-the-correct-path-to-access-the-local-wsdl)
