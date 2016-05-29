@@ -7,6 +7,7 @@ package com.github.stengerh.demos.cxf;
 
 import java.io.IOException;
 import javax.xml.ws.Endpoint;
+import org.apache.log4j.BasicConfigurator;
 
 /**
  *
@@ -15,9 +16,11 @@ import javax.xml.ws.Endpoint;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        BasicConfigurator.configure();
+        
         Endpoint soapEndpoint = Endpoint.create(new SoapPortImpl());
         
-        soapEndpoint.publish("http://localhost/wsdl11/soap11/");
+        soapEndpoint.publish("http://localhost:8080/wsdl11/soap11/");
         
         try {
             System.in.read();

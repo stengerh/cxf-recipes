@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+         http://cxf.apache.org/core
+         http://cxf.apache.org/schemas/core.xsd
+         http://cxf.apache.org/jaxws
+         http://cxf.apache.org/schemas/jaxws.xsd
+         http://cxf.apache.org/jaxrs
+         http://cxf.apache.org/schemas/jaxrs.xsd">
+ 
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+ 
+    <jaxws:endpoint id="soapEndpoint"
+                    implementor="com.github.stengerh.demos.cxf.EchoPortTypeImpl"
+                    address="/wsdl11/soap11/"
+                    wsdlLocation="http://localhost/wsdl11/soap11/?wsdl"
+                    xmlns:echo="urn:service11.cxf-demo.stengerh.github.com"
+                    serviceName="echo:EchoService"
+                    endpointName="echo:SoapPort">
+        <jaxws:features>
+            <cxf:logging/>
+        </jaxws:features>
+    </jaxws:endpoint>
+ 
+    <!--    <jaxrs:server id="greeterRest"
+    serviceClass="org.apache.hello_soap_http.GreeterImpl"
+    address="/GreeterRest"/> -->
+ 
+</beans>

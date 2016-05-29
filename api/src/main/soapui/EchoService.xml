@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="df89916f-36c5-4f79-8225-b3df7e401e06" activeEnvironment="Default" name="EchoService" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="8e82ce2b-6483-42b5-b82b-23ef15e500ab" wsaVersion="NONE" name="SoapBinding" type="wsdl" bindingName="{urn:service11.cxf-demo.stengerh.github.com}SoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/wsdl11/soap11/?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/wsdl11/soap11/?wsdl"><con:part><con:url>http://localhost:8080/wsdl11/soap11/?wsdl</con:url><con:content><![CDATA[<definitions name="EchoService11" targetNamespace="urn:service11.cxf-demo.stengerh.github.com" xmlns:wsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:whttp="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="urn:service11.cxf-demo.stengerh.github.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <documentation>WSDL 2.0 demo</documentation>
+  <types>
+    <xs:schema targetNamespace="urn:service11.cxf-demo.stengerh.github.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:service11.cxf-demo.stengerh.github.com">
+      <xs:simpleType name="char20">
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="20"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="GetRequest" type="char20"/>
+      <xs:element name="GetResponse" type="char20"/>
+    </xs:schema>
+  </types>
+  <message name="GetInputMessage">
+    <part element="tns:GetRequest" name="value"></part>
+  </message>
+  <message name="GetOutputMessage">
+    <part element="tns:GetResponse" name="value"></part>
+  </message>
+  <portType name="EchoPortType">
+    <operation name="Echo">
+      <input message="tns:GetInputMessage"></input>
+      <output message="tns:GetOutputMessage"></output>
+    </operation>
+  </portType>
+  <binding name="SoapBinding" type="tns:EchoPortType">
+    <wsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Echo">
+      <wsoap:operation soapAction="urn:service11.cxf-demo.stengerh.github.com:Echo"/>
+      <input>
+        <wsoap:body use="literal"/>
+      </input>
+      <output>
+        <wsoap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="EchoService">
+    <port binding="tns:SoapBinding" name="SoapPort">
+      <wsoap:address location="http://localhost:8080/wsdl11/soap11/"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/wsdl11/soap11/</con:endpoint></con:endpoints><con:operation id="9ca37b4d-4bf1-434d-911e-4918d9709cb3" isOneWay="false" action="urn:service11.cxf-demo.stengerh.github.com:Echo" name="Echo" bindingOperationName="Echo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc93bdb6-2c1b-418a-b8c8-b8e79df7e69c" name="Maximum parameter length"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdl11/soap11/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:service11.cxf-demo.stengerh.github.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:GetRequest>12345678901234567890</urn:GetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:service11.cxf-demo.stengerh.github.com:Echo"/><con:wsrmConfig version="1.2"/></con:call><con:call id="32d2b9d5-d2c2-47da-88e9-dc906eac117f" name="Invalid parameter length"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdl11/soap11/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:service11.cxf-demo.stengerh.github.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:GetRequest>123456789012345678901</urn:GetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:service11.cxf-demo.stengerh.github.com:Echo"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="07db6253-90eb-49ac-85d6-b68eaba9fc79" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="72cb8cdb-af40-4c27-8e0f-5385233a097d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="request" id="d22f7601-bc54-4202-ac69-bca78a546e5e" name="Echo - Maximum parameter length"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapBinding</con:interface><con:operation>Echo</con:operation><con:request name="Echo - Maximum parameter length" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="809c2f11-2603-44eb-9700-5390d74066f5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdl11/soap11/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:service11.cxf-demo.stengerh.github.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:GetRequest>12345678901234567890</urn:GetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6e8047b4-fe82-45f8-9844-2ae25b35157f" name="SOAP Response"/><con:assertion type="Schema Compliance" id="57faefd7-5608-4c50-a23b-9196f39aa95c" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="139c02ac-4a33-4370-88f9-4d08911ddb0d" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="a74f166a-076d-4b68-9c5f-015f1e34fa11" name="XPath Match"><con:configuration><path>declare namespace echo='urn:service11.cxf-demo.stengerh.github.com';
+//echo:GetResponse</path><content>12345678901234567890</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:service11.cxf-demo.stengerh.github.com:Echo"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="de3ec549-853d-4218-b301-4b3e050adf33" name="Echo - Invalid parameter length"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapBinding</con:interface><con:operation>Echo</con:operation><con:request name="Echo - Invalid parameter length" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a2b66db4-4a88-4f3e-aee3-d2b8dd2c95e2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdl11/soap11/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:service11.cxf-demo.stengerh.github.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:GetRequest>123456789012345678901</urn:GetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c4aaa4f8-08dc-47fe-a397-4d5ba38e2eed" name="SOAP Response"/><con:assertion type="Schema Compliance" id="e122df03-d252-4fd8-ac3b-38c30a150046" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion" id="bb7f1fb9-b5b1-4c9e-a53d-a5d9074a601b" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:service11.cxf-demo.stengerh.github.com:Echo"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
