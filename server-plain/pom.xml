@@ -6,7 +6,7 @@
         <artifactId>cxf-recipes-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>cxf-recipes-plain</artifactId>
+    <artifactId>cxf-recipes-server-plain</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     

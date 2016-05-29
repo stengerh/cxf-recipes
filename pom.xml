@@ -16,8 +16,8 @@
     
     <modules>
         <module>api</module>
-        <module>plain</module>
-        <module>spring</module>
+        <module>server-plain</module>
+        <module>server-spring</module>
     </modules>
     
     <dependencyManagement>
